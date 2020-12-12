@@ -46,16 +46,8 @@ namespace PaymentControl.Controllers
                 var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
                 return View(viewModel);
             }
-
-            try
-            {
-                await _sellerService.RemoveAsync(id);
-                return RedirectToAction(nameof(Index));
-            }
-            catch (IntegrityException e)
-            {
-                return RedirectToAction(nameof(Error), new { message = e.Message });
-            }
+            await _sellerService.InsertAsync(seller);
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Delete(int? id)
