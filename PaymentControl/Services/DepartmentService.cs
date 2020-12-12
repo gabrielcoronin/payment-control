@@ -1,0 +1,24 @@
+﻿using PaymentControl.Data;
+using PaymentControl.Models;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace PaymentControl.Services
+{
+    public class DepartmentService
+    {
+        private readonly PaymentControlContext _context;
+
+        public DepartmentService(PaymentControlContext context)
+        {
+            _context = context;
+        }
+
+        public List<Department> FindAll()
+        {
+            return _context.Department
+                .OrderBy(x => x.Name)
+                .ToList();
+        }        
+    }
+}
