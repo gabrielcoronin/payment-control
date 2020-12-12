@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PaymentControl.Data;
+using PaymentControl.Services;
 
 namespace PaymentControl
 {
@@ -33,6 +34,7 @@ namespace PaymentControl
                ));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
